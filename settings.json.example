@@ -1,0 +1,26 @@
+{
+	"openhabbasepath" : "http://192.168.1.1:8080/rest/items/",
+	"openhabtoken" : "",
+	"processes" : [
+		{
+			"processname" : "Zoom",
+			"openhabitem" : "Zoom_Call",
+			"nocallprocesscount" : 0
+		},
+		{
+			"processname" : "Slack",
+			"openhabitem" : "Slack_Call",
+			"nocallprocesscount" : 0
+		},
+		{
+			"processname" : "Teams",
+			"openhabitem" : "Teams_Call",
+			"nocallprocesscount" : 2
+		},
+		{
+			"processname" : "g2mvideoconference",
+			"openhabitem" : "GTM_Call",
+			"nocallprocesscount" : 0
+		}
+	]
+}
