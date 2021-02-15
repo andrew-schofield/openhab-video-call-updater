@@ -32,7 +32,7 @@ Before you begin, ensure you have met the following requirements:
 
 1. Find the process name of the tool using task manager
 2. Make sure your tool is running, but not in a video call
-3. In powershell, run `(Get-NetUDPEndpoint -OwningProcess ($process).Id -EA 0|Measure-Object).count` where `$process` is the process name you just discovered, and make a note of the response.
+3. In powershell, run `(Get-NetUDPEndpoint -OwningProcess (Get-Process $processname -EA 0).Id -EA 0|Measure-Object).count` where `$processname` is the process name you just discovered, and make a note of the response.
 4. Start a video call
 5. Run the same command again, and confirm that the response is different. If it is, then this tool will work to detect if you're on a call, if not, then unfortunately this tool won't work.
 6. Create a new entry in configuration file with the process name, openhab item, and the number from step 3.
