@@ -18,6 +18,9 @@ In my line of work, I use multiple video conferencing applications, on multiple 
 
 Before you begin, ensure you have met the following requirements:
 * A Windows machine.
+* OpenHAB 3 (see below)
+
+This tool is designed such that you have 1 item per video call application. This way it is possible to run this tool across multiple machines at once if necessary. In OpenHAB, you can create a group with all these items as members, and set the "One ON then ON else OFF" aggregation to set the state automatically if any of the items are ON.
 
 ## Configuring openhab-video-call-updater
 
@@ -45,6 +48,25 @@ Run `openhab-video-call-updater.ps1` from a powershell terminal. The script will
 
 Alternatively, you can create a windows scheduled task that starts when you log on, just be sure to configure the starting directory to be the location of the script so that it will load the `settings.json` file.
 
+## Manual changes to support OpenHAB 2.5
+
+In `openhab-video-call-updater.ps1` find the following line:
+```
+$url = $SettingsObject.openhabbasepath + $item + '/state'
+```
+and replace it with:
+```
+$url = $SettingsObject.openhabbasepath + $item
+```
+Delete the following line:
+```
+$headers.Add("Authorization", "Bearer " + $SettingsObject.openhabtoken)
+```
+Find the following line:
+```
+Invoke-RestMethod $url -Method 'PUT' -Headers $headers -Body $body
+```
+and replace `'PUT'` with `'POST'`
 
 ## License
 
